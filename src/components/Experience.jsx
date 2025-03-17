@@ -10,6 +10,7 @@ import { PlayerController } from "./PlayerController";
 import { PlayerControllerGamepad } from "./PlayerControllerGamepad";
 import { PlayerControllerKeyboard } from "./PlayerControllerKeyboard";
 import { PlayerControllerTouch } from "./PlayerControllerTouch";
+import { PlayerControllerChat } from "./PlayerControllerChat";
 import { Paris } from "./models/tracks/Tour_paris_promenade";
 import {
   EffectComposer,
@@ -74,13 +75,6 @@ export const Experience = () => {
   const testing = getState("bananas");
   const cam = useRef();
   const lookAtTarget = useRef();
-  // useEffect(() => {
-  //   setNetworkBananas(bananas);
-  // }, [bananas]);
-
-  // useEffect(() => {
-  //   setNetworkShells(shells);
-  // }, [shells]);
   const speedFactor = 5;
   const { texture } = useLoader(LUTCubeLoader, "./cubicle-99.CUBE");
   useFrame((state, delta) => {
@@ -108,6 +102,20 @@ export const Experience = () => {
     <>
       {gameStarted &&
         players.map((player) => {
+          if (player.isChatControlled) {
+            return (
+              <PlayerControllerChat
+                key={player.id}
+                player={player}
+                userPlayer={false}
+                setNetworkBananas={setNetworkBananas}
+                setNetworkShells={setNetworkShells}
+                networkBananas={networkBananas}
+                networkShells={networkShells}
+              />
+            );
+          }
+
           const ControllerComponent =
             controls === "keyboard"
               ? PlayerControllerKeyboard
@@ -148,7 +156,6 @@ export const Experience = () => {
           />
         </>
       )}
-      {/* <Paris position={[0, 0, 0]} /> */}
 
       <ParisBis position={[0, 0, 0]} />
       <ItemBox position={[-20, 2.5, -119]} />
@@ -170,11 +177,11 @@ export const Experience = () => {
       {networkShells.map((shell) => (
         <Shell
           key={shell.id}
-          id={shell.id}
           position={shell.position}
           rotation={shell.rotation}
           setNetworkShells={setNetworkShells}
           networkShells={networkShells}
+          id={shell.id}
         />
       ))}
 
