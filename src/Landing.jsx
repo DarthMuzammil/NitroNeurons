@@ -66,7 +66,7 @@ export const Landing = () => {
                       if (event.key === 'Enter') {
                         setSetupStatus(1);
                     }}} autoFocus>
-              PRESS ENTER TO START
+              Enter Dabaieye
             </button>
           </div>
         </div>
@@ -74,7 +74,7 @@ export const Landing = () => {
       {setupStatus === 1 && (
         <div className="home">
           <div className="glassy">
-            <h1>CHOOSE YOUR CONTROL STYLE</h1>
+            <h1>Kis ek saath kheloge?</h1>
 
             <div className="articles">
             <div className={controlStyle === "keyboard" ? "article selected" : "article"} onClick={() => 
@@ -116,7 +116,7 @@ export const Landing = () => {
                   actions.setGameStarted(true);
                 }}
               >
-                CONFIRM
+                Iske saaath
               </button>
             </div>
           </div>
