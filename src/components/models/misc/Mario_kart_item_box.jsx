@@ -41,7 +41,7 @@ export function ItemBox(props) {
       >
           <mesh>
         <boxGeometry args={[1, 1, 1]} />
-        <meshBasicMaterial color="green" />
+        <meshBasicMaterial color="white" />
         </mesh>
       </Float>
     </group>

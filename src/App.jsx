@@ -42,6 +42,7 @@ function App() {
 
     onPlayerJoin((state) => {
       actions.addPlayer(state);
+      actions.addPlayer(state);
 
       actions.setId(state.id);
 
